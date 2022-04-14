@@ -1,110 +1,108 @@
 {
-  "metadataVersion": "0.1.0",
   "source": {
-    "hash": "0x05f4685466e56f8186365017186fcf885bd459280e83171b96c8ce0fd4fe2c5c",
-    "language": "ink! 3.0.0-rc3",
-    "compiler": "rustc 1.54.0-nightly"
+    "hash": "0x289f15cb13ce1411dd721b8986d23bf7a9a6051d03f2ff7792c5364f6bf52466",
+    "language": "ink! 3.0.1",
+    "compiler": "rustc 1.62.0-nightly"
   },
   "contract": {
-    "name": "flipper-2",
-    "version": "1.2.4",
+    "name": "flipper",
+    "version": "0.1.0",
     "authors": [
       "[your_name] <[your_email]>"
     ]
   },
-  "spec": {
-    "constructors": [
-      {
-        "args": [
-          {
-            "name": "init_value",
-            "type": {
-              "displayName": [
-                "bool"
-              ],
-              "type": 1
-            }
-          }
-        ],
-        "docs": [
-          "Constructor that initializes the `bool` value to the given `init_value`."
-        ],
-        "name": [
-          "new"
-        ],
-        "selector": "0x9bae9d5e"
-      },
-      {
-        "args": [],
-        "docs": [
-          "Constructor that initializes the `bool` value to `false`.",
-          "",
-          "Constructors can delegate to other constructors."
-        ],
-        "name": [
-          "default"
-        ],
-        "selector": "0xed4b9d1b"
-      }
-    ],
-    "docs": [],
-    "events": [],
-    "messages": [
-      {
-        "args": [],
-        "docs": [
-          " A message that can be called on instantiated contracts.",
-          " This one flips the value of the stored `bool` from `true`",
-          " to `false` and vice versa."
-        ],
-        "mutates": true,
-        "name": [
-          "flip"
-        ],
-        "payable": false,
-        "returnType": null,
-        "selector": "0x633aa551"
-      },
-      {
-        "args": [],
-        "docs": [
-          " Simply returns the current value of our `bool`."
-        ],
-        "mutates": false,
-        "name": [
-          "get"
-        ],
-        "payable": false,
-        "returnType": {
-          "displayName": [
-            "bool"
-          ],
-          "type": 1
-        },
-        "selector": "0x2f865bd9"
-      }
-    ]
-  },
-  "storage": {
-    "struct": {
-      "fields": [
+  "V3": {
+    "spec": {
+      "constructors": [
         {
-          "layout": {
-            "cell": {
-              "key": "0x0000000000000000000000000000000000000000000000000000000000000000",
-              "ty": 1
+          "args": [
+            {
+              "label": "init_value",
+              "type": {
+                "displayName": [
+                  "bool"
+                ],
+                "type": 0
+              }
             }
+          ],
+          "docs": [
+            "Constructor that initializes the `bool` value to the given `init_value`."
+          ],
+          "label": "new",
+          "payable": false,
+          "selector": "0x9bae9d5e"
+        },
+        {
+          "args": [],
+          "docs": [
+            "Constructor that initializes the `bool` value to `false`.",
+            "",
+            "Constructors can delegate to other constructors."
+          ],
+          "label": "default",
+          "payable": false,
+          "selector": "0xed4b9d1b"
+        }
+      ],
+      "docs": [],
+      "events": [],
+      "messages": [
+        {
+          "args": [],
+          "docs": [
+            " A message that can be called on instantiated contracts.",
+            " This one flips the value of the stored `bool` from `true`",
+            " to `false` and vice versa."
+          ],
+          "label": "flip",
+          "mutates": true,
+          "payable": false,
+          "returnType": null,
+          "selector": "0x633aa551"
+        },
+        {
+          "args": [],
+          "docs": [
+            " Simply returns the current value of our `bool`."
+          ],
+          "label": "get",
+          "mutates": false,
+          "payable": false,
+          "returnType": {
+            "displayName": [
+              "bool"
+            ],
+            "type": 0
           },
-          "name": "value"
+          "selector": "0x2f865bd9"
         }
       ]
-    }
-  },
-  "types": [
-    {
-      "def": {
-        "primitive": "bool"
+    },
+    "storage": {
+      "struct": {
+        "fields": [
+          {
+            "layout": {
+              "cell": {
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "ty": 0
+              }
+            },
+            "name": "value"
+          }
+        ]
       }
-    }
-  ]
+    },
+    "types": [
+      {
+        "id": 0,
+        "type": {
+          "def": {
+            "primitive": "bool"
+          }
+        }
+      }
+    ]
+  }
 }

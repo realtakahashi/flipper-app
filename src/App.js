@@ -18,7 +18,8 @@ function App() {
     const [blockchainUrl, setBlockchainUrl] = useState('ws://127.0.0.1:9944');
 
     // NOTE the apps UI specified these in mega units -> https://polkadot.js.org/docs/api-contract/start/contract.read
-    const gasLimit = 3000n * 1000000n;
+    const gasLimit = 1;
+//    const gasLimit = 3000n * 1000000n;
 
     // Read from the contract via an RPC call
     const value = 0; // only useful on isPayable messages -> https://polkadot.js.org/docs/api-contract/start/contract.read
@@ -38,7 +39,8 @@ function App() {
 
     async function getFlipValue() {
         const contract = new ContractPromise(api, abi, contractAddress);
-        const {gasConsumed, result, output} = await contract.query.get(actingAddress, {value, gasLimit});
+        // const {gasConsumed, result, output} = await contract.query.get(actingAddress, {value:0, gasLimit:-1});
+        const {gasConsumed, result, output} = await contract.query.get(actingAddress, {gasLimit:-1});
         setGasConsumed(gasConsumed.toHuman());
         setResult(JSON.stringify(result.toHuman()));
         setOutcome(output.toHuman().toString());
@@ -49,7 +51,8 @@ function App() {
         const performingAccount = accounts.filter(a => a.address === actingAddress)[0];
         const injector = await web3FromSource(performingAccount.meta.source);
         await contract.tx
-            .flip({value, gasLimit})
+            // .flip({value:0, gasLimit:-1})
+            .flip({gasLimit:-1})
             .signAndSend(performingAccount.address, {signer: injector.signer}, (result) => {
                 if (result.status.isInBlock) {
                     setResult('in a block');
