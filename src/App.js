@@ -48,8 +48,11 @@ function App() {
 
     async function changeFlipValue() {
         const contract = new ContractPromise(api, abi, contractAddress);
-        const performingAccount = accounts.filter(a => a.address === actingAddress)[0];
+        console.log("## accounts",accounts);
+        const performingAccount = accounts[0];
+        console.log("## acount:",performingAccount);
         const injector = await web3FromSource(performingAccount.meta.source);
+        console.log("###### pass");
         await contract.tx
             // .flip({value:0, gasLimit:-1})
             .flip({gasLimit:-1})
